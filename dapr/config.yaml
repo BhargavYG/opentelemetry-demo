@@ -15,3 +15,4 @@ spec:
       endpointAddress: "otel-gateway-collector:4317"
       isSecure: true
       protocol: grpc
+      
