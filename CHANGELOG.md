@@ -11,6 +11,10 @@ the release.
   ([#2148](https://github.com/open-telemetry/opentelemetry-demo/pull/2148))
 * [product-catalog] Simplify span event name
   ([#2150](https://github.com/open-telemetry/opentelemetry-demo/pull/2150))
+* [load-generator] change image from alpine to distroless to reduce size
+  ([#2164](https://github.com/open-telemetry/opentelemetry-demo/pull/2164))
+* [recommendation] change image from alpine to distroless to reduce size
+  ([#2164](https://github.com/open-telemetry/opentelemetry-demo/pull/2164))
 
 ## 2.0.2
 
