@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f kubernetes/opentelemetry-demo.yaml'
+                sh 'kubectl apply --server-side --force-conflicts -f kubernetes/opentelemetry-demo.yaml'
             }
         }
         stage('Verify Deployment') {
