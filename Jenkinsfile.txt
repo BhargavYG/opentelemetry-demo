@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    environment {
+        KUBECONFIG = credentials('kubeconfig') // Jenkins secret file credential
+    }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/BhargavYG/opentelemetry-demo.git', branch: 'main'
+            }
+        }
+        stage('Validate YAML') {
+            steps {
+                sh 'kubectl apply --dry-run=client -f kubernetes/opentelemetry-demo.yaml'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f kubernetes/opentelemetry-demo.yaml'
+            }
+        }
+        stage('Verify Deployment') {
+            steps {
+                sh 'kubectl get pods -n default'
+            }
+        }
+    }
+    post {
+        success {
+            echo '✅ Deployment successful!'
+        }
+        failure {
+            echo '❌ Deployment failed. Check logs.'
+        }
+    }
+}
